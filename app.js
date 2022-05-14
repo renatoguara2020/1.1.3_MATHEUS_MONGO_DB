@@ -14,6 +14,11 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+
+  res.send('<h1>Conectado ao Mongo DB</h1>')
+})
+
 console.log(conn);
 app.listen(3000)
 
