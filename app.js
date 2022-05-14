@@ -1,11 +1,17 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require("express");
+const exphbs = require("express-handlebars");
+const app = express();
+const conn = require("./Database/connMongo");
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World com Express e com Mongo DB!</h1>')
-})
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+console.log(conn);
+app.listen(3000)
+
+app.use(express.json());
